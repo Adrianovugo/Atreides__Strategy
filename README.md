@@ -1,6 +1,5 @@
-# Atreides__Strategy
-"Site oficial da Atreides-Strategy-painel de investimentos"
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +12,12 @@
             --primary-color: #1a472a;
             --secondary-color: #2a623d;
             --accent-color: #5d8c5a;
-            --light-color: #f5f5f5;
-            --dark-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #2d3748;
+            --text-light: #ffffff;
+            --text-dark: #2d3748;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
         }
         
         * {
@@ -25,21 +28,26 @@
         }
         
         body {
-            background-color: #f0f2f5;
-            color: var(--dark-color);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            color: var(--text-light);
             padding: 15px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .header-content {
@@ -55,71 +63,83 @@
         }
         
         .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #fff, #e8f5e8);
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffffff, #e8f5e8);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 20px;
             color: var(--primary-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         
         .logo-text h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 5px;
+            background: linear-gradient(135deg, #ffffff, #e8f5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2px;
         }
         
         .logo-text p {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.9;
+            color: #e8f5e8;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
+            gap: 5px;
         }
         
         nav ul li a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         nav ul li a:hover, nav ul li a.active {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-left: 30px;
+            gap: 12px;
         }
         
         .social-links a {
-            color: white;
-            font-size: 20px;
-            transition: transform 0.3s;
+            color: var(--text-light);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .social-links a:hover {
             transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
         }
         
+        /* Main Content */
         .dashboard {
-            margin-top: 30px;
+            padding: 30px 0;
         }
         
         .dashboard-header {
@@ -130,39 +150,59 @@
         }
         
         .dashboard-title h2 {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--primary-color);
+            margin-bottom: 5px;
         }
         
         .dashboard-title p {
-            color: #666;
+            color: #718096;
+            font-size: 16px;
         }
         
         .date-filter select {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             background-color: white;
+            font-size: 14px;
+            color: var(--dark-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
         }
         
+        /* Cards Grid */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
         }
         
         .card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--hover-shadow);
         }
         
         .card-title {
@@ -174,42 +214,61 @@
         
         .card-title h3 {
             font-size: 16px;
-            color: #666;
+            color: #718096;
+            font-weight: 600;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: rgba(26, 71, 42, 0.1);
         }
         
         .card-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--primary-color);
+            margin-bottom: 5px;
         }
         
         .card-change {
             display: flex;
             align-items: center;
             font-size: 14px;
-            margin-top: 5px;
+            font-weight: 600;
         }
         
         .positive {
-            color: #2ecc71;
+            color: #38a169;
         }
         
         .negative {
-            color: #e74c3c;
+            color: #e53e3e;
         }
         
+        /* Charts Grid */
         .charts {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .chart-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .chart-container:hover {
+            box-shadow: var(--hover-shadow);
         }
         
         .chart-header {
@@ -222,6 +281,25 @@
         .chart-header h3 {
             font-size: 18px;
             color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .chart-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chart-actions button {
+            background: none;
+            border: none;
+            color: #a0aec0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .chart-actions button:hover {
+            color: var(--primary-color);
         }
         
         .chart-wrapper {
@@ -229,36 +307,39 @@
             height: 300px;
         }
         
+        /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 40px 0 20px;
+            margin-top: 60px;
         }
         
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
         
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 10px;
         }
         
         .footer-logo .logo {
             width: 40px;
             height: 40px;
-            font-size: 18px;
+            font-size: 16px;
         }
         
         .footer-logo h3 {
             font-size: 20px;
+            background: linear-gradient(135deg, #ffffff, #e8f5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .footer-social {
@@ -268,25 +349,36 @@
         }
         
         .footer-social a {
-            color: white;
-            font-size: 24px;
-            transition: transform 0.3s;
+            color: var(--text-light);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-social a:hover {
             transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .footer-links {
             display: flex;
             gap: 30px;
             margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .footer-links a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             transition: opacity 0.3s;
+            font-size: 14px;
         }
         
         .footer-links a:hover {
@@ -294,41 +386,123 @@
         }
         
         .copyright {
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 14px;
             opacity: 0.8;
+            text-align: center;
         }
         
-        @media (max-width: 768px) {
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
             .charts {
                 grid-template-columns: 1fr;
             }
             
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
+            .chart-wrapper {
+                height: 280px;
             }
-            
-            nav ul {
-                margin-top: 15px;
-                justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
                 flex-wrap: wrap;
             }
             
-            nav ul li {
-                margin: 5px 10px;
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
             }
             
             .social-links {
-                margin-left: 0;
-                justify-content: center;
+                margin-left: auto;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-wrapper {
+                height: 250px;
             }
             
             .footer-links {
                 flex-direction: column;
                 gap: 15px;
+                align-items: center;
             }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card-value {
+                font-size: 24px;
+            }
+            
+            .chart-container {
+                padding: 20px;
+            }
+            
+            .chart-wrapper {
+                height: 220px;
+            }
+        }
+        
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card, .chart-container {
+            animation: fadeInUp 0.5s ease-out;
         }
     </style>
 </head>
@@ -344,13 +518,17 @@
                     </div>
                 </div>
                 
-                <nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="main-nav">
                     <ul>
-                        <li><a href="#" class="active">Dashboard</a></li>
-                        <li><a href="#">Investimentos</a></li>
-                        <li><a href="#">Agronegócio</a></li>
-                        <li><a href="#">Relatórios</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                        <li><a href="#"><i class="fas fa-hand-holding-usd"></i> Investimentos</a></li>
+                        <li><a href="#"><i class="fas fa-tractor"></i> Agronegócio</a></li>
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
                     </ul>
                 </nav>
                 
@@ -387,37 +565,53 @@
                 <div class="card">
                     <div class="card-title">
                         <h3>Valor do Portfólio</h3>
-                        <span>📈</span>
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line" style="color: #1a472a;"></i>
+                        </div>
                     </div>
                     <div class="card-value">R$ 12.458.320</div>
-                    <div class="card-change positive">+3.2% (R$ 385.420)</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> +3.2% (R$ 385.420)
+                    </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-title">
                         <h3>CDB + CDI</h3>
-                        <span>🏦</span>
+                        <div class="card-icon">
+                            <i class="fas fa-university" style="color: #1a472a;"></i>
+                        </div>
                     </div>
                     <div class="card-value">R$ 4.250.000</div>
-                    <div class="card-change positive">+1.8% (R$ 75.200)</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> +1.8% (R$ 75.200)
+                    </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-title">
                         <h3>Terras & Fazendas</h3>
-                        <span>🌾</span>
+                        <div class="card-icon">
+                            <i class="fas fa-tractor" style="color: #1a472a;"></i>
+                        </div>
                     </div>
                     <div class="card-value">R$ 5.780.000</div>
-                    <div class="card-change positive">+4.5% (R$ 248.900)</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> +4.5% (R$ 248.900)
+                    </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-title">
                         <h3>Agronegócio</h3>
-                        <span>🚜</span>
+                        <div class="card-icon">
+                            <i class="fas fa-seedling" style="color: #1a472a;"></i>
+                        </div>
                     </div>
                     <div class="card-value">R$ 2.428.320</div>
-                    <div class="card-change positive">+2.7% (R$ 63.320)</div>
+                    <div class="card-change positive">
+                        <i class="fas fa-arrow-up"></i> +2.7% (R$ 63.320)
+                    </div>
                 </div>
             </div>
             
@@ -425,6 +619,10 @@
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3>Performance CDB vs CDI</h3>
+                        <div class="chart-actions">
+                            <button title="Download"><i class="fas fa-download"></i></button>
+                            <button title="Expandir"><i class="fas fa-expand"></i></button>
+                        </div>
                     </div>
                     <div class="chart-wrapper">
                         <canvas id="cdbCdiChart"></canvas>
@@ -434,6 +632,10 @@
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3>Investimento em Terras e Fazendas</h3>
+                        <div class="chart-actions">
+                            <button title="Download"><i class="fas fa-download"></i></button>
+                            <button title="Expandir"><i class="fas fa-expand"></i></button>
+                        </div>
                     </div>
                     <div class="chart-wrapper">
                         <canvas id="landInvestmentChart"></canvas>
@@ -443,6 +645,10 @@
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3>Distribuição de Investimentos no Agronegócio</h3>
+                        <div class="chart-actions">
+                            <button title="Download"><i class="fas fa-download"></i></button>
+                            <button title="Expandir"><i class="fas fa-expand"></i></button>
+                        </div>
                     </div>
                     <div class="chart-wrapper">
                         <canvas id="agroDistributionChart"></canvas>
@@ -452,6 +658,10 @@
                 <div class="chart-container">
                     <div class="chart-header">
                         <h3>Rentabilidade por Segmento</h3>
+                        <div class="chart-actions">
+                            <button title="Download"><i class="fas fa-download"></i></button>
+                            <button title="Expandir"><i class="fas fa-expand"></i></button>
+                        </div>
                     </div>
                     <div class="chart-wrapper">
                         <canvas id="profitabilityChart"></canvas>
@@ -496,6 +706,11 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
         // Dados para os gráficos
         const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
         const regions = ['Centro-Oeste', 'Sudeste', 'Sul', 'Norte', 'Nordeste'];
@@ -524,7 +739,8 @@
                         borderColor: '#1a472a',
                         backgroundColor: 'rgba(26, 71, 42, 0.1)',
                         tension: 0.3,
-                        fill: true
+                        fill: true,
+                        borderWidth: 2
                     },
                     {
                         label: 'CDI',
@@ -532,7 +748,8 @@
                         borderColor: '#2a623d',
                         backgroundColor: 'rgba(42, 98, 61, 0.1)',
                         tension: 0.3,
-                        fill: true
+                        fill: true,
+                        borderWidth: 2
                     }
                 ]
             },
@@ -540,8 +757,16 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'top' },
+                    legend: { 
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    },
                     tooltip: {
+                        mode: 'index',
+                        intersect: false,
                         callbacks: {
                             label: function(context) {
                                 return context.dataset.label + ': R$ ' + context.parsed.y.toLocaleString('pt-BR');
@@ -552,10 +777,18 @@
                 scales: {
                     y: {
                         beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
                         ticks: {
                             callback: function(value) {
                                 return 'R$ ' + (value / 1000).toFixed(0) + 'K';
                             }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
                         }
                     }
                 }
@@ -571,11 +804,11 @@
                     label: 'Valor Investido (R$)',
                     data: [1850000, 1520000, 980000, 750000, 680000],
                     backgroundColor: [
-                        'rgba(26, 71, 42, 0.7)',
-                        'rgba(42, 98, 61, 0.7)',
-                        'rgba(93, 140, 90, 0.7)',
-                        'rgba(139, 175, 117, 0.7)',
-                        'rgba(189, 215, 166, 0.7)'
+                        'rgba(26, 71, 42, 0.8)',
+                        'rgba(42, 98, 61, 0.8)',
+                        'rgba(93, 140, 90, 0.8)',
+                        'rgba(139, 175, 117, 0.8)',
+                        'rgba(189, 215, 166, 0.8)'
                     ],
                     borderColor: [
                         'rgb(26, 71, 42)',
@@ -584,14 +817,17 @@
                         'rgb(139, 175, 117)',
                         'rgb(189, 215, 166)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    borderRadius: 5
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: { 
+                        display: false
+                    },
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -603,10 +839,18 @@
                 scales: {
                     y: {
                         beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
                         ticks: {
                             callback: function(value) {
                                 return 'R$ ' + (value / 1000).toFixed(0) + 'K';
                             }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
                         }
                     }
                 }
@@ -621,20 +865,27 @@
                 datasets: [{
                     data: [45, 25, 15, 10, 5],
                     backgroundColor: [
-                        'rgba(26, 71, 42, 0.7)',
-                        'rgba(42, 98, 61, 0.7)',
-                        'rgba(93, 140, 90, 0.7)',
-                        'rgba(139, 175, 117, 0.7)',
-                        'rgba(189, 215, 166, 0.7)'
+                        'rgba(26, 71, 42, 0.8)',
+                        'rgba(42, 98, 61, 0.8)',
+                        'rgba(93, 140, 90, 0.8)',
+                        'rgba(139, 175, 117, 0.8)',
+                        'rgba(189, 215, 166, 0.8)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    hoverOffset: 15
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'right' },
+                    legend: { 
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 15
+                        }
+                    },
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -654,16 +905,19 @@
                 datasets: [{
                     label: 'Rentabilidade (%)',
                     data: [4.2, 6.8, 8.5, 7.2, 5.9],
-                    backgroundColor: 'rgba(26, 71, 42, 0.7)',
+                    backgroundColor: 'rgba(26, 71, 42, 0.8)',
                     borderColor: 'rgb(26, 71, 42)',
-                    borderWidth: 1
+                    borderWidth: 1,
+                    borderRadius: 5
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: { 
+                        display: false
+                    },
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -675,10 +929,18 @@
                 scales: {
                     y: {
                         beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
                         ticks: {
                             callback: function(value) {
                                 return value + '%';
                             }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
                         }
                     }
                 }
@@ -687,8 +949,8 @@
         
         // Filtro de período
         document.getElementById('period-select').addEventListener('change', function() {
-            alert('Período alterado para: ' + this.options[this.selectedIndex].text);
             // Em uma aplicação real, aqui você atualizaria os dados dos gráficos
+            console.log('Período alterado para: ' + this.options[this.selectedIndex].text);
         });
     </script>
 </body>
